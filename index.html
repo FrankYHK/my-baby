@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>悠悠小宝贝</title>
+  <script src="https://unpkg.com/vue"></script>
+  <style>
+    .item {
+      width: 100%;
+      padding: 20px;
+      display: flex;
+      justify-content: flex-start;
+      align-items: center;
+      font-size: 28px;
+    }
+
+    .item .label {
+      color: rgb(146, 118, 122);
+      width: 200px;
+    }
+
+    .item .value {
+      color: black;
+      font-weight: bold;
+    }
+  </style>
+</head>
+
+<body>
+  <div id="app">
+    <div class="item">
+      <div class="label">birthday:</div>
+      <div class="value">{{birthday}}</div>
+    </div>
+    <div class="item">
+      <div class="label">from today:</div>
+      <div class="value">{{fromToday}}</div>
+    </div>
+  </div>
+</body>
+
+<script>
+  var app = new Vue({
+    el: '#app',
+    data: {
+      birthday: '2020-07-19 09:23'
+    },
+    computed: {
+      fromToday: function () {
+        return `${Number((new Date().getTime() - new Date(this.birthday).getTime()) / (24 * 60 *60*1000)).toFixed(0)} 天`
+      }
+    }
+  })
+</script>
+
+</html>
